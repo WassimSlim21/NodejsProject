@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var packsRouter = require('./routes/pack');
+var categRouter = require('./routes/category');
+
 const http = require('http').Server(app);
 
 console.log('in app.js')
@@ -63,6 +65,7 @@ app.get('/', function (req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/packs', packsRouter);
+app.use('/categories', categRouter);
 
 
 /*--------------------*/

@@ -3,7 +3,9 @@ var router = express.Router();
 const auth = require('../middleware/auth');
 
 var userCtl = require("../controllers/user");
+const user = require('../models/user');
 
+if(user.role == "")
 /* GET get Account*/
 router.get('/get/:id',auth, userCtl.getUser)
 

@@ -27,6 +27,9 @@ exports.login = async (req, res,next) => {
             userName: user.userName,
             _id : user._id
           } 
+          User.findByIdAndUpdate({_id : responseUser._id}).then(u=>{
+            u.etat = 1;
+          })
           res.json({success: true, token: token ,user: responseUser});
         } else {
           res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
@@ -130,7 +133,7 @@ exports.addMultipleUser = (req, res, next) => {
     });
   }
 
-  exports.getAllUsers = (req, res, next) => {
+  exports.getAllUsers = (req, res, next) => {+-
 	User.find().populate('pack').then(users => {
 		res.send(users);
 	}).catch(err => {
